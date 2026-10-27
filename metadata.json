@@ -1,0 +1,6 @@
+{
+  "name": "Kilo FreeLLM — VS Code v1.70.2 AI Agent & Router",
+  "description": "Autonomous multi-mode AI coding agent (Kilo Code style), inline code completions, high-visibility UI themes, and full FreeLLMAPI multi-provider router built for VS Code v1.70.2+.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

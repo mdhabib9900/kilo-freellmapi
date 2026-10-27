@@ -1,0 +1,271 @@
+{
+  "name": "freellmapi-kilo-vscode",
+  "displayName": "FreeLLMAPI Kilo Agent - AI Coding Agent, Completions and Router",
+  "description": "FreeLLMAPI v0.16.9 rebuilt as a VS Code v1.70.2+ extension with Kilo Code multi-mode autonomous agent, universal inline code completions across all languages, and a custom High-Visibility UI theme.",
+  "version": "0.16.9",
+  "publisher": "freellmapi",
+  "license": "MIT",
+  "icon": "media/icon.png",
+  "engines": {
+    "vscode": "^1.70.2"
+  },
+  "categories": [
+    "Programming Languages",
+    "Machine Learning",
+    "Themes",
+    "Other"
+  ],
+  "keywords": [
+    "ai",
+    "agent",
+    "kilo-code",
+    "freellmapi",
+    "autocomplete",
+    "inline-completion",
+    "router",
+    "fusion",
+    "mcp"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onView:kiloFreeLLM.agentView",
+    "onView:kiloFreeLLM.routerView",
+    "onCommand:kiloFreeLLM.openAgent",
+    "onCommand:kiloFreeLLM.openRouterDashboard",
+    "onCommand:kiloFreeLLM.inlineEdit",
+    "onCommand:kiloFreeLLM.triggerCompletion",
+    "onCommand:kiloFreeLLM.switchMode",
+    "onCommand:kiloFreeLLM.explainCode",
+    "onCommand:kiloFreeLLM.fixDiagnostics",
+    "onCommand:kiloFreeLLM.optimizeCode",
+    "onCommand:kiloFreeLLM.generateTests",
+    "onCommand:kiloFreeLLM.startLocalRouter",
+    "onCommand:kiloFreeLLM.setupCliAgents",
+    "onCommand:kiloFreeLLM.applyHighVisTheme"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "kiloFreeLLMContainer",
+          "title": "FreeLLMAPI Kilo Agent",
+          "icon": "media/activity-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "kiloFreeLLMContainer": [
+        {
+          "type": "webview",
+          "id": "kiloFreeLLM.agentView",
+          "name": "Kilo Agent"
+        },
+        {
+          "type": "webview",
+          "id": "kiloFreeLLM.routerView",
+          "name": "FreeLLMAPI Router"
+        }
+      ]
+    },
+    "themes": [
+      {
+        "id": "freellmapi-high-visibility",
+        "label": "FreeLLMAPI Kilo High-Visibility",
+        "uiTheme": "vs-dark",
+        "path": "./themes/freellmapi-high-visibility.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "kiloFreeLLM.openAgent",
+        "title": "Focus Autonomous AI Agent",
+        "category": "FreeLLMAPI"
+      },
+      {
+        "command": "kiloFreeLLM.openRouterDashboard",
+        "title": "Open Router, Keys, Chains and Analytics Dashboard",
+        "category": "FreeLLMAPI"
+      },
+      {
+        "command": "kiloFreeLLM.inlineEdit",
+        "title": "Inline Edit / Refactor Selection",
+        "category": "FreeLLMAPI"
+      },
+      {
+        "command": "kiloFreeLLM.triggerCompletion",
+        "title": "Trigger Inline Code Suggestion",
+        "category": "FreeLLMAPI"
+      },
+      {
+        "command": "kiloFreeLLM.switchMode",
+        "title": "Switch Agent Mode (Architect / Code / Ask / Debug / Orchestrator)",
+        "category": "FreeLLMAPI"
+      },
+      {
+        "command": "kiloFreeLLM.explainCode",
+        "title": "Explain Selected Code",
+        "category": "FreeLLMAPI"
+      },
+      {
+        "command": "kiloFreeLLM.fixDiagnostics",
+        "title": "Fix Problems and Diagnostics in File",
+        "category": "FreeLLMAPI"
+      },
+      {
+        "command": "kiloFreeLLM.optimizeCode",
+        "title": "Optimize Selected Code",
+        "category": "FreeLLMAPI"
+      },
+      {
+        "command": "kiloFreeLLM.generateTests",
+        "title": "Generate Unit Tests for Selection",
+        "category": "FreeLLMAPI"
+      },
+      {
+        "command": "kiloFreeLLM.startLocalRouter",
+        "title": "Start or Restart Local Router (:3001)",
+        "category": "FreeLLMAPI"
+      },
+      {
+        "command": "kiloFreeLLM.setupCliAgents",
+        "title": "Configure CLI Agents (Claude Code, Codex, Cline, Roo, Aider, OpenCode...)",
+        "category": "FreeLLMAPI"
+      },
+      {
+        "command": "kiloFreeLLM.applyHighVisTheme",
+        "title": "Activate High-Visibility UI Theme",
+        "category": "FreeLLMAPI"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "kiloFreeLLM.openAgent",
+        "key": "ctrl+shift+a",
+        "mac": "cmd+shift+a"
+      },
+      {
+        "command": "kiloFreeLLM.inlineEdit",
+        "key": "ctrl+shift+k",
+        "mac": "cmd+shift+k",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "kiloFreeLLM.triggerCompletion",
+        "key": "alt+\\",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "kiloFreeLLM.openRouterDashboard",
+        "key": "ctrl+shift+m",
+        "mac": "cmd+shift+m"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "kiloFreeLLM.inlineEdit",
+          "group": "1_modification@1",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "kiloFreeLLM.explainCode",
+          "group": "1_modification@2",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "kiloFreeLLM.fixDiagnostics",
+          "group": "1_modification@3"
+        },
+        {
+          "command": "kiloFreeLLM.generateTests",
+          "group": "1_modification@4",
+          "when": "editorHasSelection"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "kiloFreeLLM.openRouterDashboard",
+          "when": "view == kiloFreeLLM.agentView || view == kiloFreeLLM.routerView",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "FreeLLMAPI Kilo Agent",
+      "properties": {
+        "kiloFreeLLM.routerPort": {
+          "type": "number",
+          "default": 3001,
+          "description": "Local port for the embedded FreeLLMAPI multi-protocol router (/v1, /v1/messages, /v1beta, /mcp, Ollama /api)."
+        },
+        "kiloFreeLLM.autoStartRouter": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically start the embedded FreeLLMAPI router when VS Code launches."
+        },
+        "kiloFreeLLM.inlineCompletions.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable universal real-time inline ghost-text code completions across all programming languages."
+        },
+        "kiloFreeLLM.inlineCompletions.debounceMs": {
+          "type": "number",
+          "default": 240,
+          "description": "Debounce delay in milliseconds before requesting inline completions."
+        },
+        "kiloFreeLLM.routingStrategy": {
+          "type": "string",
+          "enum": [
+            "balanced",
+            "priority",
+            "smartest",
+            "fastest",
+            "reliable",
+            "custom",
+            "decision"
+          ],
+          "default": "balanced",
+          "description": "Active FreeLLMAPI routing strategy for model selection and failover."
+        },
+        "kiloFreeLLM.keySelectionStrategy": {
+          "type": "string",
+          "enum": [
+            "auto",
+            "least-remaining"
+          ],
+          "default": "auto",
+          "description": "How FreeLLMAPI selects between multiple healthy keys on the same platform."
+        },
+        "kiloFreeLLM.activeProfile": {
+          "type": "string",
+          "default": "auto:coding",
+          "description": "Default fallback-chain profile or model alias (auto:coding, fusion, auto:architect, auto:fast)."
+        },
+        "kiloFreeLLM.promptCompression.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Run the fail-open prompt compression pipeline (dedup, toolfilter, jsoncompact, aging, fidelity-gate)."
+        },
+        "kiloFreeLLM.stickySessionsMinutes": {
+          "type": "number",
+          "default": 30,
+          "description": "Sticky session affinity window in minutes with automatic context handoff note on mid-thread failover."
+        },
+        "kiloFreeLLM.agent.autoApproveWrite": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically apply file edits without waiting for diff approval."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "esbuild src/extension.ts --bundle --platform=node --target=node16 --format=cjs --external:vscode --outfile=dist/extension.js",
+    "check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "typescript": "^5.8.0"
+  }
+}
